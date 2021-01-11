@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap');
+/* GENERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* HOME */
+
+header {
+    max-width: 940px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding: 36px 0;
+}
+
+header a {
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 19px;
+    color: #111111;
+}
+
+header a~a {
+    margin-left: 30px;
+}
+
+header a.home {
+    font-size: 24px;
+    line-height: 27px;
+    margin-right: 123px;
+    font-family: serif;
+}
+
+.wrapper {
+    width: 52%;
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+.hero {
+    background-color: #fbdfdb;
+    border-radius: 30px;
+    padding: 0 100px 0 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #111111;
+}
+
+.hero p {
+    opacity: 0.7;
+    font-size: 18px;
+    color: #000000;
+    line-height: 28px;
+    max-width: 320px;
+}
+
+.hero img {
+    height: 300px;
+    margin-top: 66px;
+}
+
+.recipes {
+    margin-top: 50px;
+}
+
+.recipes h3 {
+    font-size: 24px;
+    color: #111111;
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    padding-bottom: 10px;
+}
+
+.card img {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+
+.card h4 {
+    font-size: 18px;
+    color: #111111;
+    margin-bottom: 5px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #777777;
+}
+
+footer {
+    background-color: #eeeeee;
+    height: 62px;
+    text-align: center;
+    padding: 23px;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 14px;
+    color: #999999;
+}
+
+/* ABOUT */
+
+#content-title {
+    font-size: 24px;
+}
+
+.content {
+    margin-bottom: 30px;
+}
+
+.content h3 {
+    font-size: 20px;
+    color: #111111;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 18px;
+    color: #444444;
+    line-height: 28px;
+}

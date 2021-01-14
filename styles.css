@@ -16,6 +16,7 @@ body {
 
 header {
     max-width: 940px;
+    width: 52%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;

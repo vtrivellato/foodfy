@@ -1,0 +1,14 @@
+{% extends "../layout.njk" %}
+
+{% block content %}
+
+    <div class="hero full-w">
+        <div class="card">            
+            <img src="{{ recipe.image }}" alt="recipe">
+
+            <p><strong>Título da receita:</strong> {{ recipe.title }}</p>
+            <p><strong>Autor:</strong> {{ recipe.author }}</p>
+        </div>
+    </div>
+
+{% endblock %}

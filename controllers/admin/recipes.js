@@ -1,12 +1,13 @@
 const fs = require('fs')
 const data = require('../../data.json')
+const utils = require('../../utils')
 
 exports.index = (req, res) => {
-    return res.render('recipes/index', { recipes: data.recipes })
+    return res.render('admin/index', { recipes: data.recipes })
 }
 
 exports.create = (req, res) => {
-    return res.render('recipes/create')
+    return res.render('admin/create')
 }
 
 exports.show = (req, res) => {
@@ -20,7 +21,12 @@ exports.show = (req, res) => {
         return res.send('Receita não encontrada.')
     }
 
-    return res.send(foundRecipe)
+    const recipe = {
+        ...foundRecipe,
+        creation_date: new Intl.DateTimeFormat('pt-BR').format(foundRecipe.created_at)
+    }
+
+    return res.render('admin/details', { recipe })
 }
 
 exports.edit = (req, res) => {
@@ -34,7 +40,12 @@ exports.edit = (req, res) => {
         return res.send('Receita não encontrada.')
     }
 
-    return res.render('recipes/edit', { recipe: recipeToEdit })
+    const recipe = {
+        ...recipeToEdit,
+        creation_date: new Intl.DateTimeFormat('pt-BR').format(recipeToEdit.created_at)
+    }
+
+    return res.render('admin/edit', { recipe })
 }
 
 exports.post = (req, res) => {

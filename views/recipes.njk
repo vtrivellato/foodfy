@@ -3,78 +3,16 @@
 {% block content %}
 
     <div class="recipes">
+        <h3>Mais acessadas</h3>
+
         <div class="cards">
-            <div class="card">
-                <img src="./assets/burger.png" alt="recipe">
-                <h4>Triplo bacon burger</h4>
-                <p>por Jorge Relato</p>
-            </div>
-
-            <div class="card">
-                <img src="./assets/pizza.png" alt="recipe">
-                <h4>Pizza 4 estações</h4>
-                <p>por Fabiana Melo</p>
-            </div>
-
-            <div class="card">
-                <img src="./assets/espaguete.png" alt="recipe">
-                <h4>Espaguete ao alho</h4>
-                <p>por Júlia Kinoto</p>
-            </div>
-
-            <div class="card">
-                <img src="./assets/lasanha.png" alt="recipe">
-                <h4>Lasanha mac'n cheesee</h4>
-                <p>por Juliano Vieira</p>
-            </div>
-
-            <div class="card">
-                <img src="./assets/doce.png" alt="recipe">
-                <h4>Docinhos pão-do-céu</h4>
-                <p>por Ricardo Golvea</p>
-            </div>
-
-            <div class="card">
-                <img src="./assets/asinhas.png" alt="recipe">
-                <h4>Asinhas de frango ao barbecue</h4>
-                <p>por Vania Steroski</p>
-            </div>
-
-            <div class="card">
-                <img src="./assets/burger.png" alt="recipe">
-                <h4>Triplo bacon burger</h4>
-                <p>por Jorge Relato</p>
-            </div>
-
-            <div class="card">
-                <img src="./assets/pizza.png" alt="recipe">
-                <h4>Pizza 4 estações</h4>
-                <p>por Fabiana Melo</p>
-            </div>
-
-            <div class="card">
-                <img src="./assets/espaguete.png" alt="recipe">
-                <h4>Espaguete ao alho</h4>
-                <p>por Júlia Kinoto</p>
-            </div>
-
-            <div class="card">
-                <img src="./assets/lasanha.png" alt="recipe">
-                <h4>Lasanha mac'n cheesee</h4>
-                <p>por Juliano Vieira</p>
-            </div>
-
-            <div class="card">
-                <img src="./assets/doce.png" alt="recipe">
-                <h4>Docinhos pão-do-céu</h4>
-                <p>por Ricardo Golvea</p>
-            </div>
-
-            <div class="card">
-                <img src="./assets/asinhas.png" alt="recipe">
-                <h4>Asinhas de frango ao barbecue</h4>
-                <p>por Vania Steroski</p>
-            </div>
+            {% for recipe in recipes %}
+                <div class="card">
+                    <img src="{{ recipe.image }}" alt="recipe">
+                    <h4>{{ recipe.title }}</h4>
+                    <p>por {{ recipe.author }}</p>
+                </div>
+            {% endfor %}
         </div>
     </div>
     

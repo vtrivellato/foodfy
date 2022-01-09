@@ -2,8 +2,71 @@
 
 /* GENERAL */
 
+html,
 body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
     font-family: 'Roboto', sans-serif;
+}
+
+
+/* GLOBAL */
+
+.full-w {
+    width: 100%;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+#root {
+    flex: 1 0 auto;
+}
+
+.global-table {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    padding: 16px;
+    margin: 0 auto;
+    line-height: 24px;
+}
+
+.global-table thead {
+    margin-bottom: 8px;
+}
+
+.global-table td {
+    padding: 8px;
+    margin: 0;
+}
+
+.global-table a {
+    text-transform: none;
+    color: #000;
+}
+
+.global-table a i {
+    color: rgb(46, 72, 219);
+}
+
+input {
+    font-size: 18px;
+    line-height: 24px;
+    color: #111111;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid #bbb;
+}
+
+input:focus {
+    border-bottom: 2px solid red;
 }
 
 
@@ -53,6 +116,7 @@ header a.home {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 50px;
+    min-height: 240px;
 }
 
 .hero h2 {
@@ -199,4 +263,26 @@ footer p {
 .modal-overlay.active {
     opacity: 1;
     visibility: visible;
+}
+
+
+/* ADMIN */
+
+
+/* DETAILS */
+
+.hero .card {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.hero .card p {
+    font-size: 18px;
+    color: #111111;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.hero .card p:first-child {
+    margin-right: 8px;
 }

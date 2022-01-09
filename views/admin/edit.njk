@@ -1,0 +1,13 @@
+{% extends "../layout.njk" %}
+
+{% block content %}
+
+    <div class="hero full-w">
+        <form method="post" action="/recipes?_method=put" class="recipes">
+            <input type="text" name="title" value="{{ recipe.title }}">
+            <input type="text" name="author" value="{{ recipe.author }}">
+            <input type="text" name="author" value="{{ recipe.creation_date }}">
+        </form>
+    </div>
+
+{% endblock %}

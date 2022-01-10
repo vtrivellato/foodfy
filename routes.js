@@ -26,6 +26,12 @@ routes.get('/admin/recipes/:id', adminRecipes.show)
 
 routes.get('/admin/recipes/:id/edit', adminRecipes.edit)
 
+routes.post('/admin/recipes', adminRecipes.post)
+
+routes.put('/admin/recipes/:id', adminRecipes.put)
+
+routes.delete('/admin/recipes/:id', adminRecipes.delete)
+
 //#endregion
 
 routes.get('/about', (req, res) => {

@@ -25,6 +25,11 @@ body {
     flex-direction: row;
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 #root {
     flex: 1 0 auto;
 }
@@ -66,7 +71,17 @@ input {
 }
 
 input:focus {
-    border-bottom: 2px solid red;
+    border-bottom: 1px solid rgb(255, 170, 170);
+}
+
+.links a.active {
+    font-weight: bold;
+}
+
+button {
+    height: 40px;
+    font-size: 18px;
+    border-radius: 8px;
 }
 
 
@@ -268,6 +283,29 @@ footer p {
 
 /* ADMIN */
 
+#add-new {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin: 16px;
+}
+
+#add-new a {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(85, 153, 241);
+    height: 40px;
+    font-size: 18px;
+    border-radius: 8px;
+    padding: 8px;
+    min-width: 180px;
+}
+
+#add-new a i {
+    margin-left: 16px;
+}
+
 
 /* DETAILS */
 
@@ -285,4 +323,24 @@ footer p {
 
 .hero .card p:first-child {
     margin-right: 8px;
+}
+
+form.card button {
+    width: 50%;
+    background-color: rgb(190, 50, 50);
+}
+
+
+/* EDIT */
+
+form.recipes {
+    margin: 0 auto;
+}
+
+form.recipes input {
+    margin-bottom: 16px;
+}
+
+form.recipes button {
+    background-color: rgb(67, 190, 50);
 }

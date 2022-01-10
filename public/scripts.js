@@ -16,11 +16,11 @@ for (let card of cards) {
 
 document.querySelector('.close-modal').addEventListener('click', closeModal)
 document.querySelector('.modal-overlay').addEventListener('click', function(e) {
-    let tgt  = e.target
+    let tgt = e.target
 
     if (tgt.classList.contains('modal-overlay')) {
         closeModal()
-    }    
+    }
 })
 
 function closeModal() {
@@ -28,4 +28,13 @@ function closeModal() {
     modalOverlay.querySelector('img').src = ''
     modalOverlay.querySelector('h4').innerHTML = ''
     modalOverlay.querySelector('p').innerHTML = ''
+}
+
+const currentPage = location.pathname
+const menuItems = document.querySelectorAll('header .links a')
+
+for (const item of menuItems) {
+    if (currentPage.includes(item.getAttribute('href'))) {
+        item.classList.add('active')
+    }
 }

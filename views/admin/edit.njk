@@ -3,10 +3,12 @@
 {% block content %}
 
     <div class="hero full-w">
-        <form method="post" action="/recipes?_method=put" class="recipes">
-            <input type="text" name="title" value="{{ recipe.title }}">
-            <input type="text" name="author" value="{{ recipe.author }}">
-            <input type="text" name="author" value="{{ recipe.creation_date }}">
+        <form class="recipes flex-column" method="post" action="/admin/recipes/{{ recipe.id }}?_method=put">
+            <input type="text" name="title" value="{{ recipe.title }}" placeholder="Nome da receita">
+            <input type="text" name="author" value="{{ recipe.author }}" placeholder="Nome do autor">
+            <input type="text" name="image" value="{{ recipe.image }}" placeholder="URL da imagem">
+
+            <button type="submit">Salvar</button>
         </form>
     </div>
 

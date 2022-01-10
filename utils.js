@@ -20,5 +20,16 @@ module.exports = {
         const day = String(date.getUTCDate()).padStart(2, '0')
 
         return `${year}-${month}-${day}`
+    },
+    sequencer: data => {
+        let baseId = 0
+
+        for (const item of data) {
+            if (item.id > baseId) {
+                baseId = item.id
+            }
+        }
+
+        return baseId + 1
     }
 }

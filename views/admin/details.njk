@@ -3,12 +3,16 @@
 {% block content %}
 
     <div class="hero full-w">
-        <div class="card">            
+        <form class="card" method="post" action="/admin/recipes/{{ recipe.id }}?_method=delete">            
             <img src="{{ recipe.image }}" alt="recipe">
 
             <p><strong>Título da receita:</strong> {{ recipe.title }}</p>
             <p><strong>Autor:</strong> {{ recipe.author }}</p>
-        </div>
+
+            <div class="flex-row" style="justify-content: center;">
+                <button type="submit">Excluir</button>
+            </div>
+        </form>
     </div>
 
 {% endblock %}

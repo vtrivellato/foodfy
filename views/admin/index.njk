@@ -2,32 +2,21 @@
 
 {% block content %}
 
-    <div class="hero full-w">
-        <div class="full-w flex-column">
-            <div id="add-new">
-                <a href="/admin/recipes/create">Nova receita<i class="fas fa-plus"></i></a>
-            </div>
+    <div class="recipes">
+        <h3>Gerenciar receitas</h3>
 
-            <table class="global-table">
-                <thead>
-                    <th>Nome</th>
-                    <th>Autor</th>
-                    <th>Desde</th>
-                    <th>Detalhes</th>
-                    <th>Editar</th>
-                </thead>
-                <tbody>
-                    {% for recipe in recipes %}
-                        <tr>
-                            <td>{{ recipe.title }}</td>
-                            <td>{{ recipe.author }}</td>
-                            <td style="text-align: center;">01/01/2021</td>
-                            <td style="text-align: center;"><a href="/admin/recipes/{{ recipe.id }}"><i class="fas fa-search"></i></a></td>
-                            <td style="text-align: center;"><a href="/admin/recipes/{{ recipe.id }}/edit"><i class="fas fa-edit"></i></a></td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <div class="admin-cards">
+            {% for recipe in recipes %}
+                <div class="admin-card">
+                    <img src="{{ recipe.image }}" alt="recipe">
+
+                    <div class="flex-column">
+                        <h4>{{ recipe.title }}</h4>
+                        <p>por {{ recipe.author }}</p>
+                        <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 

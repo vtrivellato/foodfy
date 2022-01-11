@@ -2,14 +2,17 @@
 
 {% block content %}
 
-    <div class="hero full-w">
-        <form class="recipes flex-column" method="post" action="/admin/recipes/{{ recipe.id }}?_method=put">
-            <input type="text" name="title" value="{{ recipe.title }}" placeholder="Nome da receita">
-            <input type="text" name="author" value="{{ recipe.author }}" placeholder="Nome do autor">
-            <input type="text" name="image" value="{{ recipe.image }}" placeholder="URL da imagem">
+    <form class="details-card" method="post" action="/admin/recipes/{{ recipe.id }}?_method=put">
+        <div class="flex-row" style="justify-content: space-between;">
+            <h3>Editando receita</h3>
+            
+            <div>
+                <button class="button" id="deletar" onclick="this.form.action='/admin/recipes/{{ recipe.id }}?_method=delete';">Deletar</button>
+                <button class="button" type="submit">Salvar receita</button>
+            </div>
+        </div>
 
-            <button type="submit">Salvar</button>
-        </form>
-    </div>
+        {% include './fields.njk' %}
+    </form>
 
 {% endblock %}

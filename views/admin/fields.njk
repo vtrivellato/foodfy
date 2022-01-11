@@ -1,0 +1,35 @@
+<div class="form-field-area">
+    <h4>Imagem da receita</h4>
+
+    <input type="text" name="image" value="{{ recipe.image }}">
+</div>
+
+<div class="form-field-area">
+    <h4>Ingredientes</h4>
+
+    <div id="ingredients" class="input-list">
+        {% for ingredient in recipe.ingredients %}
+            <input type="text" name="ingredients[]" value="{{ ingredient }}">
+        {% endfor %}
+    </div>
+
+    <button class="add-new">Adicionar novo ingrediente</button>
+</div>
+
+<div class="form-field-area">
+    <h4>Modo de preparo</h4>
+
+    <div id="steps" class="input-list">
+        {% for step in recipe.steps %}
+            <input type="text" name="steps[]" value="{{ step }}">
+        {% endfor %}
+    </div>
+
+    <button class="add-new">Adicionar novo passo</button>
+</div>
+
+<div class="form-field-area">
+    <h4>Informações adicionais</h4>
+
+    <textarea name="infos">{{ recipe.infos }}</textarea>
+</div>

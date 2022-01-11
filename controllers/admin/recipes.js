@@ -57,7 +57,7 @@ exports.post = (req, res) => {
         }
     }
 
-    let { title, author, image } = req.body
+    let { title, author, image, ingredients, steps, infos } = req.body
 
     const id = utils.sequencer(data.recipes)
     const created_at = Date.now()
@@ -67,7 +67,10 @@ exports.post = (req, res) => {
         title,
         author,
         image,
-        created_at
+        created_at,
+        ingredients,
+        steps,
+        infos
     })
 
     fs.writeFile('data.json', JSON.stringify(data, null, 4), (err) => {
@@ -90,8 +93,7 @@ exports.put = (req, res) => {
 
     const recipe = {
         ...foundRecipe,
-        ...req.body,
-        id: Number(id)
+        ...req.body
     }
 
     data.recipes[foundIndex] = recipe

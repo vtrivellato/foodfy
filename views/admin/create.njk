@@ -2,14 +2,28 @@
 
 {% block content %}
 
-    <div class="hero full-w">
-        <form class="recipes flex-column" method="post" action="/admin/recipes">
-            <input type="text" name="title" value="{{ recipe.title }}" placeholder="Nome da receita">
-            <input type="text" name="author" value="{{ recipe.author }}" placeholder="Nome do autor">
-            <input type="text" name="image" value="{{ recipe.image }}" placeholder="URL da imagem">
+    <form class="details-card" method="post" action="/admin/recipes">
+        <div class="flex-row" style="justify-content: space-between;">
+            <h3>Criando receita</h3>
+            
+            <div>
+                <button class="button" type="submit">Salvar receita</button>
+            </div>
+        </div>
 
-            <button type="submit">Salvar</button>
-        </form>
-    </div>
+        <div class="form-field-area">
+            <h4>Nome da receita</h4>
+
+            <input type="text" name="title" value="{{ recipe.title }}">
+        </div>
+        
+        <div class="form-field-area">
+            <h4>Autor da receita</h4>
+
+            <input type="text" name="author" value="{{ recipe.author }}">
+        </div>
+
+        {% include './fields.njk' %}
+    </form>
 
 {% endblock %}

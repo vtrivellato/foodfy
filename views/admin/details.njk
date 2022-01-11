@@ -2,17 +2,41 @@
 
 {% block content %}
 
-    <div class="hero full-w">
-        <form class="card" method="post" action="/admin/recipes/{{ recipe.id }}?_method=delete">            
-            <img src="{{ recipe.image }}" alt="recipe">
+    <div class="card details-card">
+        <div class="flex-row" style="justify-content: space-between;">
+            <h3>Receita: {{ recipe.title }}</h3>
+            
+            <a href="/admin/recipes/{{ recipe.id }}/edit" class="button">Editar</a>
+        </div>
 
-            <p><strong>Título da receita:</strong> {{ recipe.title }}</p>
-            <p><strong>Autor:</strong> {{ recipe.author }}</p>
+        <img src="{{ recipe.image }}" alt="recipe">
 
-            <div class="flex-row" style="justify-content: center;">
-                <button type="submit">Excluir</button>
-            </div>
-        </form>
-    </div>
+        <div class="details-title">
+            <h2>{{ recipe.title }}</h2>
+            <p>por {{ recipe.author }}</p>
+        </div>
+
+        <section>
+            <h3>Ingredientes</h3>
+
+            {% for ingredient in recipe.ingredients %}
+                <p>-  {{ ingredient }};</p>
+            {% endfor %}
+        </section>
+
+        <section>
+            <h3>Modo de preparo</h3>
+
+            {% for step in recipe.steps %}
+                <p>-  {{ step }};</p>
+            {% endfor %}
+        </section>
+
+        <section>
+            <h3>Informações adicionais</h3>
+
+            <textarea disabled>{{ recipe.infos }}</textarea>
+        </section>        
+    </form>
 
 {% endblock %}

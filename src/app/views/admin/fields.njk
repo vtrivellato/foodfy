@@ -19,9 +19,9 @@
 <div class="form-field-area">
     <h4>Modo de preparo</h4>
 
-    <div id="steps" class="input-list">
-        {% for step in recipe.steps %}
-            <input type="text" name="steps[]" value="{{ step }}">
+    <div id="preparation" class="input-list">
+        {% for step in recipe.preparation %}
+            <input type="text" name="preparation[]" value="{{ step }}">
         {% endfor %}
     </div>
 
@@ -31,5 +31,5 @@
 <div class="form-field-area">
     <h4>Informações adicionais</h4>
 
-    <textarea name="infos">{{ recipe.infos }}</textarea>
+    <textarea name="information">{{ recipe.information }}</textarea>
 </div>

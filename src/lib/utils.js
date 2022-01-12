@@ -1,5 +1,5 @@
 module.exports = {
-    age: timestamp => {
+    age(timestamp) {
         const today = new Date()
         const birthDate = new Date(timestamp)
 
@@ -12,24 +12,19 @@ module.exports = {
 
         return age
     },
-    date: timestamp => {
+    date(timestamp) {
         const date = new Date(timestamp)
 
         const year = date.getUTCFullYear()
-        const month = String(date.getUTCMonth()).padStart(2, '0')
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0')
         const day = String(date.getUTCDate()).padStart(2, '0')
 
-        return `${year}-${month}-${day}`
-    },
-    sequencer: data => {
-        let baseId = 0
-
-        for (const item of data) {
-            if (item.id > baseId) {
-                baseId = item.id
-            }
+        return {
+            day,
+            month,
+            year,
+            iso: `${year}-${month}-${day}`,
+            birthDay: `${day}/${month}`,
         }
-
-        return baseId + 1
     }
 }

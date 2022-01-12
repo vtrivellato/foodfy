@@ -293,6 +293,8 @@ footer p {
     margin-right: 20px;
     margin-bottom: 20px;
     border-radius: 15px;
+    max-height: 96px;
+    object-fit: contain;
 }
 
 .admin-card h4 {
@@ -334,6 +336,8 @@ footer p {
 
 .details-card img {
     margin-bottom: 50px;
+    max-height: 320px;
+    object-fit: contain;
 }
 
 .details-title {

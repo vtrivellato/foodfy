@@ -27,7 +27,7 @@
         <section>
             <h3>Modo de preparo</h3>
 
-            {% for step in recipe.steps %}
+            {% for step in recipe.preparation %}
                 <p>-  {{ step }};</p>
             {% endfor %}
         </section>
@@ -35,7 +35,7 @@
         <section>
             <h3>Informações adicionais</h3>
 
-            <textarea disabled>{{ recipe.infos }}</textarea>
+            <textarea disabled>{{ recipe.information }}</textarea>
         </section>        
     </form>
 

@@ -1,0 +1,40 @@
+{% extends "../layout.njk" %}
+
+{% block content %}
+
+    <div class="card chefs details-card">
+        <div class="flex-row" style="justify-content: space-between;">
+            <h3>Chef: {{ chef.name }}</h3>
+            
+            <a href="/admin/chefs/{{ chef.id }}/edit" class="button">Editar</a>
+        </div>
+
+        <div class="avatar">
+            <img src="{{ chef.avatar_url }}" alt="chef">
+        </div>
+
+        <div class="details-title">
+            <h2>{{ chef.name }}</h2>
+            <p>{{ chef.recipesCount }} receitas</p>
+        </div>
+
+        <section>
+            <h3>Receitas</h3>
+
+            <div class="admin-cards">
+                {% for recipe in chef.recipes %}
+                    <div class="admin-card">
+                        <img src="{{ recipe.image }}" alt="recipe">
+
+                        <div class="flex-column">
+                            <h4>{{ recipe.title }}</h4>
+                            <p>por {{ recipe.author }}</p>
+                            <a class="link" href="/admin/recipes/{{ recipe.id }}">Visualizar</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>      
+    </div>
+
+{% endblock %}

@@ -11,7 +11,9 @@ ready(() => {
     const cards = document.querySelectorAll('.card')
 
     for (let card of cards) {
-        if (!cards) {
+        const currentPage = location.pathname
+
+        if (!cards || currentPage.includes('admin')) {
             return
         }
 

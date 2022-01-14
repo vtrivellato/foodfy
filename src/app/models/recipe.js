@@ -3,22 +3,28 @@ const utils = require('../../lib/utils')
 
 module.exports = {
     list(callback) {
-        const query = `SELECT * FROM recipes`
+        const query = `SELECT r.*, 
+                           (SELECT c.name FROM chefs c WHERE c.id = r.chef_id) AS author
+                       FROM recipes r 
+                       ORDER BY r.title`
 
         db.query(query, (err, results) => {
             if (err) {
-                console.log(err)
+                throw `Data base  error: ${err}`
             }
 
             callback(results.rows)
         })
     },
     select(id, callback) {
-        const query = `SELECT * FROM recipes WHERE id = ${Number(id)}`
+        const query = `SELECT r.*, 
+                           (SELECT c.name FROM chefs c WHERE c.id = r.chef_id) AS author
+                       FROM recipes r
+                       WHERE r.id = ${Number(id)}`
 
         db.query(query, (err, results) => {
             if (err) {
-                console.log(err)
+                throw `Data base  error: ${err}`
             }
 
             callback(results.rows[0])
@@ -43,7 +49,7 @@ module.exports = {
 
         db.query(query, values, (err, results) => {
             if (err) {
-                console.log(err)
+                throw `Data base  error: ${err}`
             }
 
             callback(results.rows[0])
@@ -71,10 +77,8 @@ module.exports = {
 
         db.query(query, values, (err, results) => {
             if (err) {
-                console.log(err)
+                throw `Data base  error: ${err}`
             }
-
-            console.log(results)
 
             callback()
         })
@@ -84,10 +88,21 @@ module.exports = {
 
         db.query(query, (err, results) => {
             if (err) {
-                console.log(err)
+                throw `Data base  error: ${err}`
             }
 
             callback()
+        })
+    },
+    listByChefId(chef_id, callback) {
+        const query = `SELECT * FROM recipes WHERE chef_id = ${Number(chef_id)} ORDER BY title`
+
+        db.query(query, (err, results) => {
+            if (err) {
+                throw `Data base  error: ${err}`
+            }
+
+            callback(results.rows)
         })
     }
 }

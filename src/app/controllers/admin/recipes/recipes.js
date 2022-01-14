@@ -1,26 +1,30 @@
-const recipe = require('../../models/recipe')
+const chef = require('../../../models/chef')
+const recipe = require('../../../models/recipe')
+const utils = require('../../../../lib/utils')
 
 module.exports = {
     index(req, res) {
         recipe.list(recipes => {
-            return res.render('admin/index', { recipes })
+            return res.render('admin/recipes/index', { recipes })
         })
     },
     create(req, res) {
-        return res.render('admin/create')
+        return res.render('admin/recipes/create')
     },
     show(req, res) {
         const { id } = req.params
 
-        recipe.select(id, (recipe) => {
-            return res.render('admin/details', { recipe })
+        recipe.select(id, recipe => {
+            recipe.created_at = utils.date(recipe.created_at).format
+
+            return res.render('admin/recipes/details', { recipe })
         })
     },
     edit(req, res) {
         const { id } = req.params
 
         recipe.select(id, recipe => {
-            return res.render('admin/edit', { recipe })
+            return res.render('admin/recipes/edit', { recipe })
         })
     },
     post(req, res) {

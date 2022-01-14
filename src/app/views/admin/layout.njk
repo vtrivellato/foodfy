@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block head %}<title>Foodfy</title>{% endblock %}
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/admin.css">
+    
+    <script src="https://kit.fontawesome.com/d4651fa00a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="root">
+        <header id="header-admin">
+            <a class="home" href="/admin"><img src="/assets/Foodfy.png" alt="logo"></a>
+
+            <div class="links">
+                <a href="/admin/recipes" style="color: white;">Receitas</a>
+                <a href="/admin/chefs" style="color: white;">Chefs</a>
+            </div>
+        </header>
+
+        <div class="wrapper">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    
+    <div class="modal-overlay">
+        <div class="modal">
+            <img src="" alt="recipe">
+            <h4>Asinhas de frango ao barbecue</h4>
+            <p>por Vania Steroski</p>
+
+            <a class="close-modal">Fechar modal</a>
+        </div>
+    </div>
+
+    <script src="/scripts.js"></script>
+
+    <footer id="footer-admin">
+        <p>Todos direitos reservados, receitas <a href="/">Foodfy</a>.</p>
+    </footer>
+</body>
+
+</html>

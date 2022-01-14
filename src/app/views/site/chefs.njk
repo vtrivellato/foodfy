@@ -1,0 +1,33 @@
+{% extends "./layout.njk" %}
+
+{% block head %}
+
+    <title>Foodfy</title>
+    <link rel="stylesheet" href="/admin.css">
+    
+{% endblock %}
+
+{% block content %}
+
+    <div class="chefs">
+        <div id="title" class="flex-row" style="justify-content: space-between;">
+            <h3>Gerenciar chefs</h3>
+            
+            <a href="/admin/chefs/create" class="button">Novo chef</a>
+        </div>
+
+        <div class="chefs-cards">
+            {% for chef in chefs %}
+                <div class="chefs-card">
+                    <img src="{{ chef.avatar_url }}" alt="chef">
+
+                    <div class="infos flex-column">
+                        <h4>{{ chef.name }}</h4>
+                        <p>{{ chef.total }} receitas</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

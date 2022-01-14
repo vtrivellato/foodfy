@@ -17,12 +17,21 @@
 <body>
     <div id="root">
         <header>
-            <a class="home" href="/"><img src="/assets/logo.png" alt="logo"></a>
+            <div class="menu">
+                <a class="home" href="/"><img src="/assets/logo.png" alt="logo"></a>
 
-            <div class="links">
-                <a href="/about">Sobre</a>
-                <a href="/recipes">Receitas</a>
-            </div>
+                <div class="links">
+                    <a href="/about">Sobre</a>
+                    <a href="/recipes">Receitas</a>
+                    <a href="/chefs">Chefs</a>
+                </div>
+            </div>            
+
+            <form class="search" method="get" action="/">
+                <input type="text" name="search" placeholder="Pesquisar">
+
+                <button type="submit" class="button">Buscar</button>
+            </form>
         </header>
 
         <div class="wrapper">
@@ -43,7 +52,7 @@
     <script src="/scripts.js"></script>
 
     <footer>
-        <p>Todos direitos reservados, receitas Foodfy.</p>
+        <p>Todos direitos reservados, receitas <a href="/">Foodfy</a>.</p>
     </footer>
 </body>
 

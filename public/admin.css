@@ -1,0 +1,82 @@
+/* GENERAL */
+
+#header-admin {
+    width: 100%;
+    padding-left: 24%;
+    background-color: black;
+    max-width: 100%;
+}
+
+#footer-admin {
+    background-color: black;
+}
+
+#footer-admin p,
+#footer-admin a {
+    color: white;
+}
+
+
+/* CHEFS */
+
+.chefs h3 {
+    font-size: 24px;
+    color: #111111;
+    margin-bottom: 20px;
+}
+
+.chefs-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.chefs-card {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+}
+
+.chefs-card img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    max-height: 140px;
+    object-fit: contain;
+}
+
+.chefs-card .infos {
+    margin-left: 20px;
+}
+
+.chefs-card h4 {
+    font-size: 18px;
+    color: #111111;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.chefs-card a {
+    position: relative;
+    bottom: -20px;
+    font-size: 14px;
+    color: #777777;
+}
+
+
+/* DETAILS */
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.avatar img {
+    width: 200px;
+    min-height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}

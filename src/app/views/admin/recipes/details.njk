@@ -6,7 +6,7 @@
         <div class="flex-row" style="justify-content: space-between;">
             <h3>Receita: {{ recipe.title }}</h3>
             
-            <a href="/admin/recipes/{{ recipe.id }}/edit" class="button">Editar</a>
+            <a href="/admin/recipes/{{ recipe.id }}/edit" class="button">Editar receita</a>
         </div>
 
         <img src="{{ recipe.image }}" alt="recipe">
@@ -37,6 +37,6 @@
 
             <textarea disabled>{{ recipe.information }}</textarea>
         </section>        
-    </form>
+    </div>
 
 {% endblock %}

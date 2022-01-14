@@ -1,41 +1,66 @@
 const express = require('express')
-const recipes = require('./app/controllers/recipes/recipes')
-const adminRecipes = require('./app/controllers/admin/recipes')
+const site = require('./app/controllers/site/site')
+const recipes = require('./app/controllers/admin/recipes/recipes')
+const chefs = require('./app/controllers/admin/chefs/chefs')
 
 const routes = express.Router()
 
-//#region /recipes
+//#region site
 
-routes.get('/', recipes.index)
+routes.get('/', site.index)
 
-routes.get('/recipes', recipes.list)
+routes.get('/recipes', site.list)
+
+routes.get('/about', (req, res) => {
+    return res.render('site/about')
+})
+
+routes.get('/chefs', site.chefs)
 
 //#endregion
+
+//#region /admin
+
+routes.get('/admin', (req, res) => {
+    res.render('admin/index')
+})
 
 //#region /admin/recipes
 
-routes.get('/admin', (req, res) => {
-    res.redirect('/admin/recipes')
-})
+routes.get('/admin/recipes', recipes.index)
 
-routes.get('/admin/recipes', adminRecipes.index)
+routes.get('/admin/recipes/create', recipes.create)
 
-routes.get('/admin/recipes/create', adminRecipes.create)
+routes.get('/admin/recipes/:id', recipes.show)
 
-routes.get('/admin/recipes/:id', adminRecipes.show)
+routes.get('/admin/recipes/:id/edit', recipes.edit)
 
-routes.get('/admin/recipes/:id/edit', adminRecipes.edit)
+routes.post('/admin/recipes', recipes.post)
 
-routes.post('/admin/recipes', adminRecipes.post)
+routes.put('/admin/recipes/:id', recipes.put)
 
-routes.put('/admin/recipes/:id', adminRecipes.put)
-
-routes.delete('/admin/recipes/:id', adminRecipes.delete)
+routes.delete('/admin/recipes/:id', recipes.delete)
 
 //#endregion
 
-routes.get('/about', (req, res) => {
-    return res.render('about')
-})
+//#region /admin/chefs
+
+routes.get('/admin/chefs', chefs.index)
+
+routes.get('/admin/chefs/create', chefs.create)
+
+routes.get('/admin/chefs/:id', chefs.show)
+
+routes.get('/admin/chefs/:id/edit', chefs.edit)
+
+routes.post('/admin/chefs', chefs.post)
+
+routes.put('/admin/chefs/:id', chefs.put)
+
+routes.delete('/admin/chefs/:id', chefs.delete)
+
+//#endregion
+
+//#endregion
 
 module.exports = routes

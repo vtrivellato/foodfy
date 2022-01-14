@@ -2,6 +2,7 @@
 
 #header-admin {
     width: 100%;
+    justify-content: flex-start;
     padding-left: 24%;
     background-color: black;
     max-width: 100%;

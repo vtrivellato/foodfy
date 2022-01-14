@@ -30,6 +30,20 @@ module.exports = {
             callback(results.rows[0])
         })
     },
+    findBy(search, callback) {
+        const query = `SELECT r.*, 
+                           (SELECT c.name FROM chefs c WHERE c.id = r.chef_id) AS author
+                       FROM recipes r
+                       WHERE UPPER(r.title) LIKE UPPER('%${search}%')`
+
+        db.query(query, (err, results) => {
+            if (err) {
+                throw `Data base  error: ${err}`
+            }
+
+            callback(results.rows)
+        })
+    },
     insert(data, callback) {
         let { title, author, image, ingredients, preparation, information } = data
 

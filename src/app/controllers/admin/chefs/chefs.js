@@ -66,8 +66,14 @@ module.exports = {
     delete(req, res) {
         const { id } = req.params
 
-        chef.delete(id, () => {
-            return res.redirect(`/admin/chefs`)
+        recipe.listByChefId(id, recipes => {
+            if (recipes.length > 0) {
+                return res.send('Não é possível deletar esse chef, ele ainda tem receitas cadastradas.')
+            }
+
+            chef.delete(id, () => {
+                return res.redirect(`/admin/chefs`)
+            })
         })
     }
 }

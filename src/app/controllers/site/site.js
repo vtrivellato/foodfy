@@ -8,9 +8,17 @@ module.exports = {
         })
     },
     list(req, res) {
-        recipe.list(recipes => {
-            return res.render('site/recipes', { recipes })
-        })
+        const { search } = req.query
+
+        if (!search) {
+            recipe.list(recipes => {
+                return res.render('site/recipes', { recipes })
+            })
+        } else {
+            recipe.findBy(search, recipes => {
+                return res.render('site/recipes', { recipes })
+            })
+        }
     },
     chefs(req, res) {
         chef.list(chefs => {

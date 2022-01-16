@@ -6,7 +6,7 @@ module.exports = {
         const query = `SELECT r.*, 
                            (SELECT c.name FROM chefs c WHERE c.id = r.chef_id) AS author
                        FROM recipes r 
-                       ORDER BY r.title`
+                       ORDER BY r.created_at DESC`
 
         db.query(query, (err, results) => {
             if (err) {
@@ -34,7 +34,8 @@ module.exports = {
         const query = `SELECT r.*, 
                            (SELECT c.name FROM chefs c WHERE c.id = r.chef_id) AS author
                        FROM recipes r
-                       WHERE UPPER(r.title) LIKE UPPER('%${search}%')`
+                       WHERE UPPER(r.title) LIKE UPPER('%${search}%')
+                       ORDER BY r.updated_at DESC`
 
         db.query(query, (err, results) => {
             if (err) {

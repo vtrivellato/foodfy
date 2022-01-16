@@ -1,5 +1,7 @@
 const chef = require('../../../models/chef')
 const recipe = require('../../../models/recipe')
+const file = require('../../../models/file')
+const recipeFile = require('../../../models/recipeFile')
 const utils = require('../../../../lib/utils')
 
 module.exports = {
@@ -35,7 +37,7 @@ module.exports = {
             return res.render('admin/chefs/edit', { chef })
         })
     },
-    post(req, res) {
+    async post(req, res) {
         const keys = Object.keys(req.body)
 
         for (const key of keys) {
@@ -44,9 +46,20 @@ module.exports = {
             }
         }
 
-        chef.insert(req.body, chef => {
-            return res.redirect(`chefs/${chef.id}`)
+        if (!req.file) {
+            return res.send('Attach a avatar image to continue.')
+        }
+
+        const resultsFile = await file.insert(req.file)
+        const fileId = resultsFile.rows[0].id
+
+        const results = await chef.insert({
+            ...req.body,
+            file_id: fileId
         })
+        const chefId = results.rows[0].id
+
+        return res.redirect(`chefs/${chefId}`)
     },
     put(req, res) {
         const { id } = req.params

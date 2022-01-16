@@ -1,7 +1,10 @@
 const express = require('express')
+
+const multer = require('./app/middlewares/multer')
 const site = require('./app/controllers/site/site')
 const recipes = require('./app/controllers/admin/recipes/recipes')
 const chefs = require('./app/controllers/admin/chefs/chefs')
+const users = require('./app/controllers/admin/users/users')
 
 const routes = express.Router()
 
@@ -53,11 +56,29 @@ routes.get('/admin/chefs/:id', chefs.show)
 
 routes.get('/admin/chefs/:id/edit', chefs.edit)
 
-routes.post('/admin/chefs', chefs.post)
+routes.post('/admin/chefs', multer.single('avatar'), chefs.post)
 
-routes.put('/admin/chefs/:id', chefs.put)
+routes.put('/admin/chefs/:id', multer.single('avatar'), chefs.put)
 
 routes.delete('/admin/chefs/:id', chefs.delete)
+
+//#endregion
+
+//#region /admin/users
+
+routes.get('/admin/users', users.index)
+
+routes.get('/admin/users/create', users.create)
+
+routes.get('/admin/users/:id', users.show)
+
+routes.get('/admin/users/:id/edit', users.edit)
+
+routes.post('/admin/users', users.post)
+
+routes.put('/admin/users/:id', users.put)
+
+routes.delete('/admin/users/:id', users.delete)
 
 //#endregion
 

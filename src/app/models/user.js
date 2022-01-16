@@ -3,11 +3,9 @@ const utils = require('../../lib/utils')
 
 module.exports = {
     list(callback) {
-        const query = `SELECT c.*, 
-                           (SELECT f.path FROM files f WHERE f.id = c.file_id) AS avatar_url,
-                           (SELECT count(r.*) FROM recipes r WHERE r.chef_id = c.id) AS total
-                       FROM chefs c 
-                       ORDER BY name`
+        const query = `SELECT u.*
+                       FROM users u
+                       ORDER BY u.name`
 
         db.query(query, (err, results) => {
             if (err) {
@@ -18,11 +16,9 @@ module.exports = {
         })
     },
     select(id, callback) {
-        const query = `SELECT c.*, 
-                           (SELECT f.path FROM files f WHERE f.id = c.file_id) AS avatar_url,
-                           (SELECT count(r.*) FROM recipes r WHERE r.chef_id = c.id) AS total
-                       FROM chefs c 
-                       WHERE id = ${Number(id)}`
+        const query = `SELECT u.*
+                           FROM users u
+                       WHERE u.id = ${Number(id)}`
 
         db.query(query, (err, results) => {
             if (err) {
@@ -32,31 +28,43 @@ module.exports = {
             callback(results.rows[0])
         })
     },
-    async insert(data) {
-        let { name, file_id } = data
+    insert(data, callback) {
+        let { name, email, password, isAdmin } = data
 
-        const query = `INSERT INTO chefs (id, name, file_id, created_at)
-                       VALUES (DEFAULT, $1, $2, $3)
+        const query = `INSERT INTO users (id, name, email, password, is_admin, created_at)
+                       VALUES (DEFAULT, $1, $2, $3, $4, $5)
                        RETURNING id`
 
         const values = [
             name,
-            file_id,
+            email,
+            password,
+            Boolean(isAdmin),
             utils.date(Date.now()).iso
         ]
 
-        return await db.query(query, values)
+        db.query(query, values, (err, results) => {
+            if (err) {
+                throw `Data base  error: ${err}`
+            }
+
+            callback(results.rows[0])
+        })
     },
     update(id, data, callback) {
-        let { name } = data
+        let { name, email, password } = data
 
-        const query = `UPDATE chefs 
-                       SET name = $2
+        const query = `UPDATE users 
+                       SET name = $2, 
+                           email = $3, 
+                           password = $4
                        WHERE id = $1`
 
         const values = [
             id,
-            name
+            name,
+            email,
+            password
         ]
 
         db.query(query, values, (err, results) => {
@@ -68,7 +76,7 @@ module.exports = {
         })
     },
     delete(id, callback) {
-        const query = `DELETE FROM chefs WHERE id = ${Number(id)}`
+        const query = `DELETE FROM users WHERE id = ${Number(id)}`
 
         db.query(query, (err, results) => {
             if (err) {

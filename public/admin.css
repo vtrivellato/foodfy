@@ -81,3 +81,23 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+
+/* USERS */
+
+.form-side {
+    width: 100%;
+}
+
+.form-side>.form-field-area {
+    margin-right: 40px;
+    margin-left: 20px;
+}
+
+.form-side>.form-field-area:first-child {
+    margin-left: 0px;
+}
+
+.form-side>.form-field-area:last-child {
+    margin-right: 0px;
+}

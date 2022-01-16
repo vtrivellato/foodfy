@@ -67,4 +67,23 @@ ready(() => {
             inputsContainer.innerHTML += `<input type="text" name="${tipo}[]" value="">`
         })
     }
+
+    const photoUpload = document.getElementById('avatar')
+
+    if (photoUpload) {
+        photoUpload.addEventListener('change', function(e) {
+            const input = e.target
+            const fileList = input.files;
+            const parent = input.parentElement
+            const button = parent.querySelector('p')
+
+            if (fileList.length > 0) {
+                button.style.backgroundColor = '#5AE657'
+                button.style.color = 'black'
+            } else {
+                button.style.backgroundColor = '#6558C3'
+                button.style.color = 'white'
+            }
+        })
+    }
 })

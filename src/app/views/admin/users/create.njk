@@ -1,0 +1,22 @@
+{% extends "../layout.njk" %}
+
+{% block content %}
+
+    <form class="details-card" method="post" action="/admin/users" >
+        <div class="flex-row" style="justify-content: space-between;">
+            <h3>Criar usuário</h3>
+            
+            <div>
+                <button class="button" type="submit">Salvar</button>
+            </div>
+        </div>
+
+        {% include './fields.njk' %}
+        
+        <div class="form-field-area">
+            <input id="isAdmin "type="checkbox" name="isAdmin" value=false>
+            <label for="isAdmin"> Adminsitrador</label><br>
+        </div>
+    </form>
+
+{% endblock %}

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <form class="details-card" method="post" action="/admin/chefs/{{ chef.id }}?_method=put">
+    <form class="details-card" method="post" action="/admin/chefs/{{ chef.id }}?_method=put" enctype="multipart/form-data">
         <div class="flex-row" style="justify-content: space-between;">
             <h3>Editando chef: {{ chef.name }}</h3>
             
